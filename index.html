@@ -67,6 +67,8 @@ button{
     <button onclick="novaJanela()">➕ Nova Janela</button>
     <button onclick="spawn10()">🎲 Criar 10</button>
     <button onclick="limparTudo()">🗑️ Limpar Tudo</button>
+
+    <input type="file" id="upload" accept="image/*">
 </div>
 
 <script>
@@ -80,6 +82,18 @@ const imagens = [
 ];
 
 const janelas = [];
+
+document.getElementById("upload").addEventListener("change", e => {
+
+    const arquivo = e.target.files[0];
+
+    if(!arquivo) return;
+
+    const url = URL.createObjectURL(arquivo);
+
+    criarJanela(url);
+
+});
 
 function novaJanela(){
 
